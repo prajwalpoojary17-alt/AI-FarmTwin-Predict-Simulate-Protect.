@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and isolated private FarmTwin configuration",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique Firebase Authentication UID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the user"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the user"
+        },
+        "farmName": {
+          "type": "string",
+          "description": "Name of the user's farm"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Account registration timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last synchronization timestamp"
+        },
+        "farmConfig": {
+          "type": "object",
+          "description": "Complete private farm zones, crop health inputs, and settings"
+        },
+        "events": {
+          "type": "array",
+          "description": "User specific event detection intrusion records"
+        }
+      },
+      "required": [
+        "id",
+        "email"
+      ]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Isolated private user profile and farm dataset"
+    }
+  }
+}
